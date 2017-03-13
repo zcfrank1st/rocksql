@@ -24,6 +24,6 @@ trait RocksOperator {
   private def delete(rockOpts: RockOpts): Unit = {}
 
   private def selectWithSideEffect(rockOpts: RockOpts): Unit = {
-    //
+    // TODO store in concurrent hashmap
   }
 }

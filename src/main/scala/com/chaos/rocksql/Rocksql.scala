@@ -1,5 +1,6 @@
 package com.chaos.rocksql
 
+
 import java.util.concurrent.Executors
 
 import com.chaos.rocksql.model._
@@ -18,7 +19,7 @@ object Rocksql extends SqlParser with QueueOperator {
   val factory = new RockOptsFactory
   val ringBufferSize: Int = 1024 * 1024
   val disruptor = new Disruptor(factory,
-    ringBufferSize, Executors.defaultThreadFactory(),
+    ringBufferSize, Executors.newSingleThreadScheduledExecutor(),
     ProducerType.SINGLE,
     new YieldingWaitStrategy())
   val handler = new RockOptsEventHandler

@@ -7,7 +7,7 @@ import com.chaos.rocksql.model.{Opt, RockOpts}
   */
 trait SqlParser {
   def transform(sql: String)(implicit opt: Opt): RockOpts = {
-    // TODO parse sql to RockOpts
+    // TODO parse sql to RockOpts with uuid
     ???
   }
 }
