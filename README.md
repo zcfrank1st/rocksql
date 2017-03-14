@@ -1,7 +1,7 @@
 Rocksql
 ========
 
-A sql wrapper project for rocksdb
+A simple sql wrapper project for rocksdb
 
 TODO
 
