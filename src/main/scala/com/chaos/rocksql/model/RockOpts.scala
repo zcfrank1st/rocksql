@@ -12,4 +12,4 @@ object Insert extends Opt
 object Update extends Opt
 object Select extends Opt
 
-case class RockOpts (serial:String, typ: Opt, keys: List[String], values: Option[List[String]])
+case class RockOpts (typ: Opt, keys: List[String], values: Option[List[String]])
