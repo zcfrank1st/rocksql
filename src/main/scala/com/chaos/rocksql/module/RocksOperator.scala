@@ -14,7 +14,7 @@ trait RocksOperator {
     rockOpts.typ match {
       case Create | Update | Insert => put(rockOpts)
       case Drop | Delete => delete(rockOpts)
-      case Select => selectWithSideEffect(rockOpts)
+      case Select => get(rockOpts)
     }
   }
 
@@ -23,7 +23,6 @@ trait RocksOperator {
 
   private def delete(rockOpts: RockOpts): Unit = {}
 
-  private def selectWithSideEffect(rockOpts: RockOpts): Unit = {
-    // TODO store in concurrent hashmap
-  }
+  // TODO return
+  private def get(rockOpts: RockOpts): Unit = {}
 }
