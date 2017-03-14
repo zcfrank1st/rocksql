@@ -27,13 +27,17 @@ trait RocksOperator extends ConfigModule {
 
   private def put(rockOpts: RockOpts): Unit = this.synchronized {
     for(db <- managed(RocksDB.open(options, dbSource))) {
-      // TODO
+      (rockOpts.keys, rockOpts.values.get).zipped.foreach((key, value) => {
+        db.put(key.getBytes(), value.getBytes())
+      })
     }
   }
 
   private def delete(rockOpts: RockOpts): Unit = this.synchronized {
     for(db <- managed(RocksDB.open(options, dbSource))) {
-      // TODO
+      rockOpts.keys.foreach(e => {
+        db.delete(e.getBytes())
+      })
     }
   }
 }
