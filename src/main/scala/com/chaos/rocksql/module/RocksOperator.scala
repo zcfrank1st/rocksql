@@ -5,7 +5,7 @@ import org.rocksdb.{Options, RocksDB}
 /**
   * Created by zcfrank1st on 13/03/2017.
   */
-trait RocksOperator extends ConfigModule {
+trait RocksOperator extends ConfigModule with Utils {
   val options: Options = new Options().setCreateIfMissing(true)
   val dbSource: String = conf.getString("rocksql.db.src")
 
@@ -39,10 +39,4 @@ trait RocksOperator extends ConfigModule {
       })
     }
   }
-
-  private def use[A <: { def close(): Unit }, B](resource: A)(code: A => B): B =
-    try
-      code(resource)
-    finally
-      resource.close()
 }
