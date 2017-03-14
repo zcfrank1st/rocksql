@@ -6,9 +6,10 @@ import resource._
 /**
   * Created by zcfrank1st on 13/03/2017.
   */
-trait RocksOperator {
+trait RocksOperator extends ConfigModule {
   RocksDB.loadLibrary()
   val options: Options = new Options().setCreateIfMissing(true)
+  val dbSource: String = conf.getString("rocksql.db.src")
 
   def execute(rockOpts: RockOpts): Unit = {
     rockOpts.typ match {
@@ -18,20 +19,20 @@ trait RocksOperator {
   }
 
   def query[F[_], A](rockOpts: RockOpts): F[A] = this.synchronized {
-    for(db <- managed(RocksDB.open(options, ""))) {
+    for(db <- managed(RocksDB.open(options, dbSource))) {
       // TODO
     }
     ???
   }
 
   private def put(rockOpts: RockOpts): Unit = this.synchronized {
-    for(db <- managed(RocksDB.open(options, ""))) {
+    for(db <- managed(RocksDB.open(options, dbSource))) {
       // TODO
     }
   }
 
   private def delete(rockOpts: RockOpts): Unit = this.synchronized {
-    for(db <- managed(RocksDB.open(options, ""))) {
+    for(db <- managed(RocksDB.open(options, dbSource))) {
       // TODO
     }
   }
