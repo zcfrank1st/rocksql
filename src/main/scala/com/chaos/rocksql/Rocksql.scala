@@ -9,10 +9,10 @@ import com.chaos.rocksql.module.{RocksOperator, SqlParser}
   */
 //for only one statement
 object Rocksql extends SqlParser with RocksOperator {
-  // TODO return
-  def select(sql: String): Unit = {
+
+  def select[F[_], A](sql: String): F[A] = {
     implicit val opt = Select
-    execute(transform(sql))
+    query(transform(sql))
   }
 
   def insert(sql: String): Unit = {
